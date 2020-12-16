@@ -46,3 +46,13 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+
+class Notes(models.Model):
+    user = models.ForeignKey(User, related_name="Notes", on_delete=models.CASCADE)
+    title = models.CharField(max_length=255, default="Untitled Note")
+    file_content = models.FileField(max_length=None)
+    filename = models.CharField(max_length=255, default="img_1000_000")
+
+    def __str__(self):
+        return self.filename
