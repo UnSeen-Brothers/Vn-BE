@@ -1,10 +1,11 @@
 from django.urls import path
 # from .views import UserView, SingleUserView, SignUp, ExamView, QuestionView
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView, TokenVerifyView
-from .views import NotesView
+from .views import NotesView, SignUp
 
 
 urlpatterns = [
+    path('signup', SignUp.as_view({"post":"create"}), name="sign-up"),
     path('notes/', NotesView.as_view({"get": "list", "post":"create"}), name="single-note"),
     path('notes/<int:pk>/', NotesView.as_view({"get": "retrieve", "post":"update"})),
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

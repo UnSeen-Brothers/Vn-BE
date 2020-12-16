@@ -5,7 +5,7 @@ class IsNoteOwner(permissions.BasePermission):
 # this is a custom permission to reatrict access to Update and Delete another users exam
     message = "User is not the Owner of this note"
     
-    def has_permissions(self, request):
+    def has_permissions(self, request, view, obj):
 
         restricted_actions = ["partial_update", "destroy", "update", "retrieve"]
 

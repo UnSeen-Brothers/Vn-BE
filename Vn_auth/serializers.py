@@ -8,3 +8,10 @@ class NotesSerializer(serializers.ModelSerializer):
         model = Notes
         extra_kwargs = {'user': {'read_only': True}}
         fields = '__all__'
+
+
+class UsersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User()
+        extra_kwargs = {'password': {'write_only': True}}
+        fields = ["id", "email", "password"]
